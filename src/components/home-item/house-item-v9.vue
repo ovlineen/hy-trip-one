@@ -14,11 +14,12 @@
 				<div class="evaluate-price">
 					<van-rate
 						class="evaluate"
-						v-model="itemData.commentScore"
+						v-model="commentScore"
 						size="15px"
 						gutter="1px"
 						color="#fff"
 						void-color="#fff"
+						:count="5"
 					/>
 					<div class="new-price">￥{{ itemData.finalPrice }}</div>
 				</div>
@@ -28,12 +29,16 @@
 </template>
 
 <script setup>
-defineProps({
+import { ref } from "vue";
+const props = defineProps({
 	itemData: {
 		type: Object,
 		defaults: () => ({}),
 	},
 });
+
+let commentScore = ref(0);
+commentScore.value = +props.itemData?.commentScore;
 </script>
 
 <style lang="scss" scoped>

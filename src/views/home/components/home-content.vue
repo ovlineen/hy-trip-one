@@ -28,6 +28,7 @@ import homeItemV3 from "@/components/home-item/house-item-v3.vue";
 
 const homeStore = useHomeStore();
 const { homelist } = storeToRefs(homeStore);
+
 </script>
 
 <style lang="scss" scoped>

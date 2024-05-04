@@ -7,12 +7,12 @@
 		<home-search-box :hot-suggests="hotSuggests"></home-search-box>
 		<home-categories></home-categories>
 		<home-content></home-content>
-		<button @click="getClick">加载更多</button>
 	</div>
 </template>
 
 <script setup>
 import { storeToRefs } from "pinia";
+import useScroll from "@/hooks/useScroll";
 import homeNavBar from "./components/home-nav-bar.vue";
 import useHomeStore from "@/stores/modules/home";
 import homeSearchBox from "../home/components/home-search-box.vue";
@@ -30,14 +30,14 @@ homeStore.fetchHomeListData();
 // 结构出 Home 数据
 const { hotSuggests, homelist } = storeToRefs(homeStore);
 
-const getClick = () => {
+// 无感获取页面数据 侦听Windows滚动
+useScroll(() => {
 	homeStore.fetchHomeListData();
-};
+});
 </script>
 
 <style lang="scss" scoped>
 .home {
-	overflow-y: auto;
 	margin-bottom: 3.75rem;
 	background-color: #f5f7f9;
 }
