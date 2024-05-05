@@ -18,6 +18,7 @@ import useHomeStore from "@/stores/modules/home";
 import homeSearchBox from "../home/components/home-search-box.vue";
 import homeCategories from "../home/components/home-categories.vue";
 import homeContent from "./components/home-content.vue";
+import { watch } from "vue";
 
 // 获取状态管理库数据
 const homeStore = useHomeStore();
@@ -31,8 +32,13 @@ homeStore.fetchHomeListData();
 const { hotSuggests, homelist } = storeToRefs(homeStore);
 
 // 无感获取页面数据 侦听Windows滚动
-useScroll(() => {
-	homeStore.fetchHomeListData();
+const { isReachBottom } = useScroll();
+
+watch(isReachBottom, newValue => {
+	if (newValue) {
+		homeStore.fetchHomeListData();
+		isReachBottom.value = false;
+	}
 });
 </script>
 
