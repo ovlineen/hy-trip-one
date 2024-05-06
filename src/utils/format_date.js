@@ -1,10 +1,10 @@
 import dayjs from "dayjs";
 
 export function formatMouthDay(date) {
-    return dayjs(date).format('MM月DD日')
+    return dayjs(date).format('MM月DD日');
 }
 
 
-export function getDiffDays(startDate,endDate) {
-    return dayjs(endDate).diff(startDate,"day")
+export function getDiffDays(startDate, endDate) {
+    return dayjs(endDate).diff(startDate, "day");
 }

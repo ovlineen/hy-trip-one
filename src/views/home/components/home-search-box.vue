@@ -15,14 +15,14 @@
 		<div class="date-range" @click="showCalendar = true">
 			<div class="start">
 				<span class="text">入住</span>
-				<span>{{ startDate }}</span>
+				<span>{{ startDateStr }}</span>
 			</div>
 			<div class="stay">
 				<span> 共{{ stayCount }}晚 </span>
 			</div>
 			<div class="end">
 				<span class="text">离开</span>
-				<span>{{ endDate }}</span>
+				<span>{{ endDateStr }}</span>
 			</div>
 		</div>
 
@@ -69,6 +69,7 @@ import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 import useCityStore from "@/stores/modules/city";
+import useMainStore from "@/stores/modules/main";
 
 const router = useRouter();
 defineProps({
@@ -77,7 +78,6 @@ defineProps({
 		defaults: () => [],
 	},
 });
-
 
 const positionClick = () => {
 	navigator.geolocation.getCurrentPosition(
@@ -100,24 +100,21 @@ const { currentCity } = storeToRefs(cityStore);
 import { formatMouthDay, getDiffDays } from "@/utils/format_date";
 
 // 获取当前日期时间  封装了 formatMouthDay 使用第三方库 dayjs
-const nowdate = new Date();
-const startDate = ref(formatMouthDay(nowdate));
-const endDate = ref(formatMouthDay(nowdate.setDate(nowdate.getDate() + 1)));
-let stayCount = computed(() =>
-	getDiffDays(new Date(), nowdate.setDate(nowdate.getDate() + 1))
-);
+const mainStore = useMainStore();
+const { startDate, endDate } = storeToRefs(mainStore);
+const startDateStr = computed(() => formatMouthDay(startDate.value));
+const endDateStr = computed(() => formatMouthDay(endDate.value));
+const stayCount = ref(getDiffDays(startDate.value, endDate.value));
+
 // 日历组件
-let showCalendar = ref(false);
+const showCalendar = ref(false);
 const onConfirm = value => {
-	const selectStarDate = formatMouthDay(value[0]);
-	const selectEndDate = formatMouthDay(value[1]);
-	startDate.value = selectStarDate;
-	endDate.value = selectEndDate;
+	const selectStarDate = value[0];
+	const selectEndDate = value[1];
+	mainStore.startDate = selectStarDate;
+	mainStore.endDate = selectEndDate;
+	stayCount.value = getDiffDays(selectStarDate, selectEndDate);
 	showCalendar.value = false;
-	// 获取当天 + 当天+1天 计算出共几晚 因为有的月份天数不一致，如2月就没有29、30等，所以要采用这种形式
-	stayCount = computed(
-		() => (stayCount = computed(() => getDiffDays(value[0], value[1])))
-	);
 };
 
 // 热门区域

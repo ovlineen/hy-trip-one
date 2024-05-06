@@ -1,8 +1,6 @@
 <template>
-  <div class="app">
-    <router-view></router-view>
-    <tab-bar v-if="!route.meta.tabBarActive"></tab-bar>
-  </div>
+	<router-view></router-view>
+	<tab-bar v-if="!route.meta.tabBarActive"></tab-bar>
 </template>
 
 <script setup>

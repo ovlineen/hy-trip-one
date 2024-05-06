@@ -29,10 +29,19 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import tarbarData from "@/assets/data/tabbar";
 import { getAssetURL } from "@/utils/load_assets";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
 const currentIndex = ref(0);
+
+watch(route, newValue => {
+	const index = tarbarData.findIndex(item => item.path === newValue.path);
+	if (newValue === -1) return;
+	currentIndex.value = index;
+});
 const itemClick = index => {
 	currentIndex.value = index;
 };

@@ -14,9 +14,8 @@ export default function useScroll() {
         clientHeight.value = document.documentElement.clientHeight;
         scrollTop.value = Math.ceil(document.documentElement.scrollTop);
         scrollHeight.value = document.documentElement.scrollHeight;
-        console.log('节流');
+
         if (clientHeight.value + scrollTop.value >= scrollHeight.value) {
-            console.log('滚动到底部了');
             isReachBottom.value = true;
         }
     }, 100);
