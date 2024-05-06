@@ -1,11 +1,13 @@
 <template>
 	<router-view></router-view>
 	<tab-bar v-if="!route.meta.tabBarActive"></tab-bar>
+	<loading></loading>
 </template>
 
 <script setup>
 import { useRoute } from "vue-router";
 import TabBar from "./components/tarbar/tarbar.vue";
+import loading from "./components/loading/loading.vue";
 const route = useRoute();
 </script>
 
