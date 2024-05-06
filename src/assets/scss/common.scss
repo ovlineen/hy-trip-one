@@ -1,5 +1,13 @@
 $primaryColor: #ff9584;
 
-.van-icon-search {
-    color: $primaryColor;
+
+
+:root {
+    --van-nav-bar-text-color:#ff9584 !important;
+}
+
+.van-nav-bar {
+    .van-icon {
+        color: #ff9584 !important;
+    }
 }

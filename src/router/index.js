@@ -26,15 +26,22 @@ const router = createRouter({
         {
             path: '/city',
             component: () => import('@/views/city/city.vue'),
-            meta:{
-                tabBarActive:true,
+            meta: {
+                tabBarActive: true,
             }
         },
         {
             path: '/search',
             component: () => import('@/views/search/search.vue'),
-            meta:{
-                tabBarActive:true,
+            meta: {
+                tabBarActive: true,
+            }
+        },
+        {
+            path: '/detail/:id',
+            component: () => import('@/views/detail/detail.vue'),
+            meta: {
+                tabBarActive: true,
             }
         },
     ]
