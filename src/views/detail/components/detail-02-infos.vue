@@ -55,7 +55,7 @@ const props = defineProps({
 	padding: 0 10px;
 	.detail-titile {
 		font-size: 16px;
-		margin-bottom: 10px;
+		margin: 10px 0;
 	}
 	.detail-tags {
 		font-size: 12px;

@@ -41,6 +41,9 @@ const itemClick = item => {
 <style lang="scss" scoped>
 .home-content {
 	padding: 0 10px;
+	.title {
+		margin-bottom: 10px;
+	}
 }
 .list {
 	display: flex;

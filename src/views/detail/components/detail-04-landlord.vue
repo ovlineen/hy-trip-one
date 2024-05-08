@@ -90,7 +90,9 @@ const bottomCilck = () => {
 			margin-top: 10px;
 			display: flex;
 			align-items: center;
+
 			.logo {
+				margin-right: 10px;
 				img {
 					width: 50px;
 					height: 50px;
@@ -99,6 +101,7 @@ const bottomCilck = () => {
 			.intro-nameTag {
 				display: flex;
 				flex-direction: column;
+				font-size: 0.875rem;
 
 				.tag {
 					margin-top: 5px;

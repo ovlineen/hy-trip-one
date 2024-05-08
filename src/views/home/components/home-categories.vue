@@ -22,6 +22,7 @@ const { categories } = storeToRefs(homeStore);
 	display: flex;
 	overflow-x: auto;
 	margin-top: 0.625rem;
+	margin-bottom: 15px;
 	background-color: #fff;
 	padding: 0 10px;
 	scrollbar-width: none; /* Firefox */

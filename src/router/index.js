@@ -38,6 +38,10 @@ const router = createRouter({
             }
         },
         {
+            path: '/detail/',
+            redirect: 'home'
+        },
+        {
             path: '/detail/:id',
             component: () => import('@/views/detail/detail.vue'),
             meta: {
