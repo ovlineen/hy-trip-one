@@ -60,7 +60,7 @@ const props = defineProps({
 	.detail-tags {
 		font-size: 12px;
 		span {
-			padding: 0 3px;
+			padding: 3px;
 			margin: 0 3px;
 		}
 	}
@@ -68,7 +68,7 @@ const props = defineProps({
 	.detail-comment {
 		display: flex;
 		padding: 10px;
-		margin-top: 10px;
+		margin-top: 13px;
 		background-color: #f5f7fb;
 		justify-content: space-between;
 		align-items: center;

@@ -57,6 +57,8 @@ const itemClick = index => {
 	height: 3.125rem;
 	border-top: 1px solid #ccc;
 	background-color: #fff;
+	z-index: 520;
+
 	.tab-bar-item {
 		flex: 1;
 

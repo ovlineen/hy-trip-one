@@ -7,7 +7,6 @@ const useDetailStore = defineStore('detail', {
     }),
     actions: {
         async fatchDetailData(houseId) {
-            console.log(houseId);
             const res = await getDetailInfos(houseId);
             this.detailData = res.data;
         }

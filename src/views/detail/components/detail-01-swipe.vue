@@ -23,9 +23,9 @@
 									swipeData[active]?.enumPictureCategory ==
 									key
 								"
-								>{{ getCategoryIndex(swipeData[active]) }}/{{
-									value.length
-								}}</span
+								>{{
+									getCategoryIndex(swipeData[active]) + 1
+								}}/{{ value.length }}</span
 							>
 						</div>
 					</template>
@@ -61,10 +61,8 @@ const getName = name => {
 
 const getCategoryIndex = item => {
 	const valueArray = swipeGroup[item?.enumPictureCategory];
-	valueArray?.findIndex(data => data === item);
+	return valueArray?.findIndex(data => data === item);
 };
-
-
 </script>
 
 <style lang="scss" scoped>
