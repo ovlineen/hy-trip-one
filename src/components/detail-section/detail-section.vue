@@ -13,7 +13,6 @@ const title = inject("titletext");
 
 <style lang="scss" scoped>
 .section {
-	padding: 0 10px;
 	margin-top: 12px;
 	background-color: #fff;
 

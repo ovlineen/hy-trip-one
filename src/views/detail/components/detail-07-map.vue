@@ -1,6 +1,8 @@
 <template>
-	<detailSection></detailSection>
-	<div class="baidu-map" ref="mapRef"></div>
+	<div class="baidu">
+		<detailSection></detailSection>
+		<div class="baidu-map" ref="mapRef"></div>
+	</div>
 </template>
 
 <script setup>
@@ -28,8 +30,11 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.baidu-map {
-	margin-top: 5px;
-	height: 300px;
+.baidu {
+	padding: 0 10px;
+	.baidu-map {
+		margin-top: 5px;
+		height: 300px;
+	}
 }
 </style>

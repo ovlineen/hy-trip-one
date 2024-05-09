@@ -1,6 +1,6 @@
 <template>
-	<detail-section></detail-section>
 	<div class="landlord">
+		<detail-section></detail-section>
 		<div class="intro">
 			<img class="intro-title-img" :src="landlordData.topScroll" alt="" />
 			<div class="intro-info">

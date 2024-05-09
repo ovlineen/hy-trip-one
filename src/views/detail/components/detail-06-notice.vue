@@ -1,6 +1,6 @@
 <template>
-	<detailSection></detailSection>
 	<div class="notice">
+		<detailSection></detailSection>
 		<template v-for="(item, index) in noticeData.orderRules" :key="index">
 			<div class="item">
 				<span class="title">{{ item.title }}</span>
@@ -25,6 +25,7 @@ defineProps({
 <style lang="scss" scoped>
 .notice {
 	margin-top: 10px;
+	padding: 0 10px;
 	.item {
 		display: flex;
 		margin: 10px;

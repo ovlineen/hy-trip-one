@@ -1,6 +1,6 @@
 <template>
-	<detailSection></detailSection>
 	<div class="comment">
+		<detailSection></detailSection>
 		<div class="score-fcus">
 			<div class="score">
 				<h1 class="title">{{ commentData.overall }}</h1>

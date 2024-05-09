@@ -9,7 +9,7 @@ const router = createRouter({
         },
         {
             path: '/home',
-            component: () => import('@/views/home/home.vue')
+            component: () => import('@/views/home/home.vue'),
         },
         {
             path: '/favor',
@@ -39,16 +39,23 @@ const router = createRouter({
         },
         {
             path: '/detail/',
-            redirect: 'home'
+            redirect: '/home'
         },
         {
             path: '/detail/:id',
             component: () => import('@/views/detail/detail.vue'),
             meta: {
                 tabBarActive: true,
+            },
+            beforeEnter: (to, from, next) => {
+                window.scrollTo(0, 0);
+                next();
             }
-        },
+        }
     ]
 });
+
+
+
 
 export default router;

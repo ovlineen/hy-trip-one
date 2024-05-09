@@ -12,8 +12,6 @@ const props = defineProps({
 		default: () => ({}),
 	},
 });
-
-console.log(props.introData);
 </script>
 
 <style lang="scss" scoped>

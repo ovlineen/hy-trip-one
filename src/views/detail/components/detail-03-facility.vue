@@ -46,38 +46,41 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-.facility-content {
-	display: flex;
-	flex-direction: column;
-	background-color: #f7f9fb;
-	font-size: 14px;
-	padding: 10px;
-	.facility-item {
+.facility {
+	padding: 0 10px;
+	.facility-content {
 		display: flex;
-
-		.left {
-			width: 30%;
+		flex-direction: column;
+		background-color: #f7f9fb;
+		font-size: 14px;
+		padding: 10px;
+		.facility-item {
 			display: flex;
-			flex-direction: column;
-			align-items: center;
-			margin: 10px 10px 0px 0px;
 
-			img {
-				width: 25px;
-				height: 25px;
+			.left {
+				width: 30%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin: 10px 10px 0px 0px;
+
+				img {
+					width: 25px;
+					height: 25px;
+				}
 			}
-		}
-		.content {
-			flex: 1;
-			margin-top: 15px;
+			.content {
+				flex: 1;
+				margin-top: 15px;
 
-			.iten {
-				margin-bottom: 7px;
-				float: left;
-				width: 40%;
-				.icon {
-					vertical-align: middle;
-					margin-right: 3px;
+				.iten {
+					margin-bottom: 7px;
+					float: left;
+					width: 40%;
+					.icon {
+						vertical-align: middle;
+						margin-right: 3px;
+					}
 				}
 			}
 		}
