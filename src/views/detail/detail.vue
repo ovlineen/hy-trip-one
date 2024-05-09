@@ -53,10 +53,11 @@
 				src="@/assets/img/detail/icon_ensure.png"
 				alt=""
 			/>
-			<p class="text">项目基于 Vue3+ Pinia+ Vue Router 开发</p>
+			<p class="text">项目基于 Vue3 + Pinia + Vant UI 开发</p>
 			<p class="text">
 				项目由 Bugu 用 <span style="color: red">❤</span> 开发
 			</p>
+			<p>coderwhy</p>
 		</footer>
 	</div>
 </template>
