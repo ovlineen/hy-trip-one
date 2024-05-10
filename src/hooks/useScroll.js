@@ -66,7 +66,7 @@ export default function useScroll(elRef) {
     const scrollListenerHandler = throttle(() => {
         if (el === window) {
             clientHeight.value = document.documentElement.clientHeight;
-            scrollTop.value = document.documentElement.scrollTop;
+            scrollTop.value = Math.ceil(document.documentElement.scrollTop);
             scrollHeight.value = document.documentElement.scrollHeight;
         } else {
             clientHeight.value = el.clientHeight;
@@ -75,6 +75,7 @@ export default function useScroll(elRef) {
         }
 
         if (clientHeight.value + scrollTop.value >= scrollHeight.value) {
+            console.log('滚动到底部了');
             isReachBottom.value = true;
         }
     }, 100);

@@ -7,7 +7,7 @@ const useHomeStore = defineStore('home', {
         categories: [],
 
         currentPage: 1,
-        homelist: []
+        homelist: [],
     }),
     actions: {
         async fetchHotSuggestData() {

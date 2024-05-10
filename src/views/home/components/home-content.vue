@@ -34,6 +34,9 @@ const { homelist } = storeToRefs(homeStore);
 const router = useRouter();
 
 const itemClick = item => {
+	if (item === null) {
+		return alert("抱歉，只有前二十条有数据");
+	}
 	router.push("/detail/" + item.houseId);
 };
 </script>

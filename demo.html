@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>detail Tabr核心算法</title>
+	</head>
+	<body>
+		<button class="btn">点击生成随机数</button>
+	</body>
+	<script>
+		// 定义数据
+		// 该算法适用于歌词匹配等
+		const values = [100, 300, 500, 800, 1000];
+		const btnEl = document.querySelector(".btn");
+
+		btnEl.addEventListener("click", () => {
+			const currentValue = Math.floor(Math.random() * 1300);
+			matchIndex(currentValue);
+		});
+
+		function matchIndex(currentValue) {
+			let currentIndex = values.length - 1;
+
+			for (let i = 0; i < values.length; i++) {
+				const value = values[i];
+				if (value > currentValue) {
+					currentIndex = i - 1;
+					break;
+				}
+			}
+
+			console.log("value", currentValue, "index", currentIndex);
+		}
+	</script>
+</html>

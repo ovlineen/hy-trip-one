@@ -1,5 +1,5 @@
 <template>
-	<div class="home">
+	<div class="home" ref="homeRef">
 		<home-nav-bar></home-nav-bar>
 		<div class="banner">
 			<img src="@/assets/img/home/banner.webp" alt="" />
@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { computed, watch } from "vue";
+import { computed, onActivated, watch, ref } from "vue";
 import { storeToRefs } from "pinia";
 import useScroll from "@/hooks/useScroll";
 import homeNavBar from "./components/home-nav-bar.vue";
@@ -36,12 +36,19 @@ homeStore.fetchHomeListData();
 const { hotSuggests, homelist } = storeToRefs(homeStore);
 
 // 无感获取页面数据 侦听Windows滚动
-const { isReachBottom, scrollTop } = useScroll();
+const homeRef = ref();
+const { isReachBottom, scrollTop } = useScroll(homeRef);
 watch(isReachBottom, newValue => {
 	if (newValue) {
 		homeStore.fetchHomeListData();
 		isReachBottom.value = false;
 	}
+});
+
+onActivated(() => {
+	homeRef?.value.scrollTo({
+		top: scrollTop.value,
+	});
 });
 
 // 搜索模块
@@ -52,8 +59,10 @@ const isShowSearchBar = computed(() => {
 
 <style lang="scss" scoped>
 .home {
+	height: 100vh;
 	margin-bottom: 3.75rem;
 	background-color: #f5f7f9;
+	overflow: auto;
 }
 .banner {
 	img {

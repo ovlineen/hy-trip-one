@@ -47,10 +47,6 @@ const router = createRouter({
             meta: {
                 tabBarActive: true,
             },
-            beforeEnter: (to, from, next) => {
-                window.scrollTo(0, 0);
-                next();
-            }
         }
     ]
 });

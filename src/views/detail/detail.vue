@@ -47,6 +47,7 @@
 			:ref="getSectionRef"
 		></detail-map>
 		<detail-intro :intro-data="introductionModule"></detail-intro>
+		<detail-price :price-data="priceModule?.product"></detail-price>
 		<footer class="footer">
 			<img
 				class="ensure"
@@ -62,8 +63,13 @@
 	</div>
 </template>
 
+<script>
+export default {
+	name: "home",
+};
+</script>
 <script setup>
-import { ref, computed, onBeforeUpdate } from "vue";
+import { ref, computed, onActivated } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 import useDetailStore from "@/stores/modules/detail";
@@ -75,6 +81,8 @@ import DetailComment from "./components/detail-05-comment.vue";
 import DetailNotice from "./components/detail-06-notice.vue";
 import DetailMap from "./components/detail-07-map.vue";
 import DetailIntro from "./components/detail-08-intro.vue";
+import DetailPrice from "./components/detail-09-price.vue";
+import useScroll from "@/hooks/useScroll";
 
 const router = useRouter();
 const onClickLeft = () => {
@@ -86,16 +94,23 @@ const route = useRoute();
 const detailStore = useDetailStore();
 detailStore.fatchDetailData(route.params.id);
 const { detailData } = storeToRefs(detailStore);
+// 组件切换时发送请求，以确保数据可以更新
+onActivated(() => {
+	// 绞尽脑汁，花了半小时，郁闷了半小时。可能是我没有什么经验吧
+	// 只有前20条有数据，后面的20条皆没有数据
+	console.log("我执行了");
+	detailStore.fatchDetailData(route.params.id);
+});
 
-const mainPart = computed(() => detailData.value.mainPart);
+const mainPart = computed(() => detailData?.value?.mainPart);
 const dynamicModule = computed(() => detailData.value?.mainPart?.dynamicModule);
 const introductionModule = computed(
 	() => detailData.value?.mainPart?.introductionModule
 );
+const priceModule = computed(() => detailData.value?.pricePart?.priceModule);
 
 // 滚动监听
 const active = ref();
-import useScroll from "@/hooks/useScroll";
 const detailRef = ref();
 const { scrollTop } = useScroll(detailRef);
 const showTabControl = computed(() => {
@@ -108,11 +123,6 @@ const sectionEls = [];
 const getSectionRef = value => {
 	sectionEls.push(value.$el);
 };
-
-// // 组件切换前的逻辑处理 将组件设置为异步组件，点击前将索引切换为我点击的下标，以解决我们 line 线不能正常显示的问题
-// const tbsBeforeChange = index => {
-// 	active.value = index;
-// };
 
 const tabClick = index => {
 	console.log(active.value);

@@ -58,10 +58,12 @@ const props = defineProps({
 		margin: 10px 0;
 	}
 	.detail-tags {
+		display: flex;
+		flex-wrap: wrap;
 		font-size: 12px;
 		span {
 			padding: 3px;
-			margin: 0 3px;
+			margin: 2px 0.8vw;
 		}
 	}
 
